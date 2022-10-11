@@ -10,3 +10,7 @@ img {
   font-size: 20px;
   font-weight: bold;
 }
+
+.bg-green {
+  background-color: green;
+}
