@@ -1,5 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
 const Agents = () => {
   const [allAgents, setAllAgents] = useState([]);
@@ -90,6 +92,9 @@ const Agents = () => {
             return (
               <div key={selectedAgents.id} className="selectedAgents">
                 <p>{selectedAgents.name}</p>
+                <button>
+                  <FontAwesomeIcon icon={faXmark} />
+                </button>
               </div>
             );
           })}
