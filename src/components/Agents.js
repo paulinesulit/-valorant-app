@@ -2,13 +2,13 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
-import { conditionalExpression } from "@babel/types";
+
 
 const Agents = () => {
   const [allAgents, setAllAgents] = useState([]);
   const [userAgents, setUserAgents] = useState([]);
   const [randomAgent, setRandomAgent] = useState([]);
-  const [randomAllAgents, setRandomAllAgents] = useState([]);
+
 
   // API call
   useEffect(() => {
@@ -22,7 +22,6 @@ const Agents = () => {
     })
       .then((res) => {
         setAllAgents(res.data.data);
-        // console.log(res.data.data);
       })
       .catch((error) => {
         console.log(error);
@@ -32,36 +31,41 @@ const Agents = () => {
   // Click to select characters use wants to randomize
   const addAgent = (agent) => {
     const agentObject = {
-      id: agent.uuid,
-      name: agent.displayName,
-      description: agent.description,
-      photo: agent.fullPortrait,
+      uuid: agent.uuid,
+      displayName: agent.displayName,
+      fullPortrait: agent.fullPortrait,
     };
     setUserAgents((current) => [...current, agentObject]);
   };
-  // Add a conditional that doesn't let user add duplicate
+  // REMOVE DUPLICATES IN USER AGENTS - IT THROWS AN ERROR AND MESSES UP REMOVE BUTTON FUNCTIONALITY, POSSIBLY DUE TO HAVING THE SAME KEY
+
 
   // Randomize agents selected
-
   const randomizeAgent = () => {
     const randomNum = Math.floor(Math.random() * userAgents.length);
     setRandomAgent(userAgents[randomNum]);
   };
 
-  // Randomize all agents if none are selected (randomAgent is empty)
+  // Randomize all agents
   const randomizeAllAgents = () => {
     const randomNum = Math.floor(Math.random() * allAgents.length);
-    setRandomAllAgents(allAgents[randomNum]);
+    setRandomAgent(allAgents[randomNum]);
   };
 
-  // console.log(randomAllAgents);
 
-  // add X to remove selected characters and clear all
+  // add X to remove selected characters
   const removeAgent = (id) => {
     const newList = userAgents;
     newList.splice(id, 1);
     setUserAgents([...newList]);
   };
+
+  // clear all selected characters
+  const resetList = (id) => {
+    const newList = userAgents;
+    newList.splice(id, userAgents.length);
+    setUserAgents([...newList]);
+  }
 
   return (
     <div>
@@ -76,11 +80,7 @@ const Agents = () => {
                     addAgent(eachAgent);
                   }}
                 >
-                  {/* {addToList ? eachAgent.displayName : "✓"} */}
-                  {/* {console.log(addToList, eachAgent.displayName)} */}
-                  {/* {console.log(userAgents.name)} */}
                   {eachAgent.displayName}
-                  {/* {console.log(userAgents)} */}
                 </button>
               </div>
             );
@@ -94,19 +94,22 @@ const Agents = () => {
             Randomize All
           </button>
         </section>
-
+        
         <section className="selectedAgents">
           <h2>Selected Agents</h2>
           {userAgents.map((selectedAgents) => {
             return (
-              <div key={selectedAgents.id} className="selectedAgents">
-                <p>{selectedAgents.name}</p>
+              <div key={selectedAgents.uuid} className="selectedAgents">
+                <p>{selectedAgents.displayName}</p>
+                {console.log(selectedAgents)}
                 <button onClick={() => removeAgent(selectedAgents.id)}>
                   <FontAwesomeIcon icon={faXmark} />
                 </button>
               </div>
             );
           })}
+
+          {userAgents.length === 0 ? null : <button onClick={() => resetList(userAgents.id)}>Clear All Selected Agents</button>}
 
           <button
             className="randomBtn"
@@ -119,22 +122,16 @@ const Agents = () => {
         </section>
 
         <section>
-          {randomAllAgents.length === 0 ? null : (
-            <div>
-              <p>{randomAllAgents.displayName}</p>
-              <img src={randomAllAgents.fullPortrait} alt="photo of agent" />
-            </div>
-          )}
           {randomAgent.length === 0 ? null : (
-            <div>
-              <p>{randomAgent.name}</p>
-              <img src={randomAgent.photo} alt="photo of agent" />
+            <div className="randomAgent">
+              <p>{randomAgent.displayName}</p>
+              <img src={randomAgent.fullPortrait} alt="agent" />
             </div>
           )}
         </section>
       </main>
     </div>
   );
-};
+};;
 
 export default Agents;
