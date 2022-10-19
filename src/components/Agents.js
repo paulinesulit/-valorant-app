@@ -2,13 +2,12 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
-import DisableButton from "./DisableButton";
+import AgentButtons from "./AgentButtons";
 
 const Agents = () => {
   const [allAgents, setAllAgents] = useState([]);
   const [userAgents, setUserAgents] = useState([]);
   const [randomAgent, setRandomAgent] = useState([]);
-  const [isDisabled, setDisabled] = useState(false);
 
   // API call
   useEffect(() => {
@@ -22,14 +21,11 @@ const Agents = () => {
     })
       .then((res) => {
         setAllAgents(res.data.data);
-        // setDisabled(new Array(res.data.length).fill(false));
       })
       .catch((error) => {
         console.log(error);
       });
   }, []);
-
-  // console.log(isDisabled);
 
   // Click to select characters use wants to randomize
   const addAgent = (agent) => {
@@ -41,12 +37,6 @@ const Agents = () => {
     // console.log(agent);
     setUserAgents((current) => [...current, agentObject]);
   };
-  // REMOVE DUPLICATES IN USER AGENTS - IT THROWS AN ERROR AND MESSES UP REMOVE BUTTON FUNCTIONALITY, POSSIBLY DUE TO HAVING THE SAME KEY
-
-  // const object = (agent) => {
-  //   userAgents.push(agent);
-  //   console.log(userAgents.push(agent));
-  // };
 
   // Randomize agents selected
   const randomizeAgent = () => {
@@ -82,16 +72,14 @@ const Agents = () => {
           {allAgents.map((eachAgent, index) => {
             return (
               <div key={index}>
-                {/* <button
-                  onClick={() => {
+                <AgentButtons
+                  object={eachAgent}
+                  selected={userAgents}
+                  handleClick={() => {
                     addAgent(eachAgent);
                   }}
-                  // disabled={isDisabled}
-                >
-                  {eachAgent.displayName}
-                </button> */}
-                <DisableButton object={eachAgent} />
-                {/* {console.log(eachAgent)} */}
+                />
+                {/* {console.log(userAgents)} */}
               </div>
             );
           })}
