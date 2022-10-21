@@ -54,6 +54,9 @@ const Agents = () => {
   const removeAgent = (id) => {
     const newList = userAgents;
     newList.splice(id, 1);
+    // newList.slice(id);
+    console.log(id);
+    // deletes first index character, not the character being clicked, FIXXX!!
     setUserAgents([...newList]);
   };
 
@@ -78,6 +81,9 @@ const Agents = () => {
                   handleClick={() => {
                     addAgent(eachAgent);
                   }}
+                  removeClick={() => {
+                    removeAgent(eachAgent);
+                  }}
                 />
                 {/* {console.log(userAgents)} */}
               </div>
@@ -91,6 +97,26 @@ const Agents = () => {
           >
             Randomize All
           </button>
+          <button
+            className="randomBtn"
+            onClick={() => {
+              randomizeAgent();
+            }}
+          >
+            Randomize Selected Agents
+          </button>
+        </section>
+
+        <section>
+          <h2>Selected Agents</h2>
+          {userAgents.map((selectedAgents) => {
+            return (
+              <div key={selectedAgents.uuid} className="selectedAgents">
+                <p>{selectedAgents.displayName}</p>
+                {/* {console.log(selectedAgents)} */}
+              </div>
+            );
+          })}
         </section>
 
         <section className="selectedAgents">
