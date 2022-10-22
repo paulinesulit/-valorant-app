@@ -1,7 +1,5 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import AgentButtons from "./AgentButtons";
 
 const Agents = () => {
@@ -34,7 +32,6 @@ const Agents = () => {
       displayName: agent.displayName,
       fullPortrait: agent.fullPortrait,
     };
-    // console.log(agent);
     setUserAgents((current) => [...current, agentObject]);
   };
 
@@ -52,26 +49,16 @@ const Agents = () => {
 
   // add X to remove selected characters
   const removeAgent = (id) => {
-    const newList = userAgents;
-    newList.splice(id, 1);
-    // newList.slice(id);
-    console.log(id);
-    // deletes first index character, not the character being clicked, FIXXX!!
-    setUserAgents([...newList]);
-  };
-
-  // clear all selected characters
-  const resetList = (id) => {
-    const newList = userAgents;
-    newList.splice(id, userAgents.length);
-    setUserAgents([...newList]);
+    const newList = userAgents.filter((e) => {
+      return e.displayName !== id.displayName
+    });
+    setUserAgents(newList);
   };
 
   return (
     <div className="wrapper">
       <main>
         <section className="allAgents">
-          <h2>All Agents here</h2>
           {allAgents.map((eachAgent, index) => {
             return (
               <div key={index}>
@@ -85,74 +72,33 @@ const Agents = () => {
                     removeAgent(eachAgent);
                   }}
                 />
-                {/* {console.log(userAgents)} */}
               </div>
             );
           })}
-          <button
-            className="randomBtn"
-            onClick={() => {
-              randomizeAllAgents();
-            }}
-          >
-            Randomize All
-          </button>
-          <button
-            className="randomBtn"
-            onClick={() => {
-              randomizeAgent();
-            }}
-          >
-            Randomize Selected Agents
-          </button>
-        </section>
-
-        <section>
-          <h2>Selected Agents</h2>
-          {userAgents.map((selectedAgents) => {
-            return (
-              <div key={selectedAgents.uuid} className="selectedAgents">
-                <p>{selectedAgents.displayName}</p>
-                {/* {console.log(selectedAgents)} */}
-              </div>
-            );
-          })}
-        </section>
-
-        <section className="selectedAgents">
-          <h2>Selected Agents</h2>
-          {userAgents.map((selectedAgents) => {
-            return (
-              <div key={selectedAgents.uuid} className="selectedAgents">
-                <p>{selectedAgents.displayName}</p>
-                {/* {console.log(selectedAgents)} */}
-                <button onClick={() => removeAgent(selectedAgents.id)}>
-                  <FontAwesomeIcon icon={faXmark} />
-                </button>
-              </div>
-            );
-          })}
-
-          {userAgents.length === 0 ? null : (
-            <button onClick={() => resetList(userAgents.id)}>
-              Clear All Selected Agents
+          <div className="randomizeBtns">
+            <button
+              className="randomAll"
+              onClick={() => {
+                randomizeAllAgents();
+              }}
+            >
+              Randomize All Agents
             </button>
-          )}
-
-          <button
-            className="randomBtn"
-            onClick={() => {
-              randomizeAgent();
-            }}
-          >
-            Randomize Selected Agents
-          </button>
+            <button
+              className="randomSelected"
+              onClick={() => {
+                randomizeAgent();
+              }}
+            >
+              Randomize Selected Agents
+            </button>
+          </div>
         </section>
-
-        <section>
+        
+        <section className="agentContainer">
           {randomAgent.length === 0 ? null : (
             <div className="randomAgent">
-              <p>{randomAgent.displayName}</p>
+              <h2>{randomAgent.displayName}</h2>
               <img src={randomAgent.fullPortrait} alt="agent" />
             </div>
           )}
@@ -160,6 +106,6 @@ const Agents = () => {
       </main>
     </div>
   );
-};;
+};;;
 
 export default Agents;

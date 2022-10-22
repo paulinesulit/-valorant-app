@@ -1,4 +1,49 @@
-button:disabled {
-    background-color: green;
-    color: wheat;
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Rubik:wght@300;700&display=swap');
+
+h1 {
+    color: $textBright;
+    font-family: $fontHeader;
+    font-size: 2rem;
 }
+
+h2 {
+    font-size: 1.5rem;
+    font-family: $fontMain;
+    color: $textBright;
+    text-transform: uppercase;
+    text-align: center;
+    padding-top: 10px;
+}
+
+p {
+    font-family: $fontHeader;
+    font-weight: 300px;
+    color: $textNeutral;
+}
+
+footer p {
+    font-family: $fontHeader;
+    font-weight: 300;
+    font-size: 0.8rem;
+}
+
+// buttons
+
+button {
+    font-family: $fontMain;
+    background-color: $bgSecond;
+    border: none;
+    color: $textNeutral;
+    padding: 6px;
+    margin: 5px;
+    cursor: pointer;
+    &:disabled {
+        background-color: green;
+        color: $textBright;
+        margin: 5px 0;
+        cursor: default;
+    }
+}
+
+
+

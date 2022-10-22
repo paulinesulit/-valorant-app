@@ -17,15 +17,13 @@ const AgentButtons = (props) => {
   };
 
   return (
-    <div>
-      <button onClick={addAgent} disabled={isDisabled}>
+    <div className="agentBtns">
+      <button onClick={addAgent} disabled={isDisabled} className="agentBtn">
         {props.object.displayName}
       </button>
 
-      {/* {console.log(props.object)} */}
-
       {isDisabled ? (
-        <button onClick={remove}>
+        <button onClick={remove} className="xBtn">
           <FontAwesomeIcon icon={faXmark} />
         </button>
       ) : null}

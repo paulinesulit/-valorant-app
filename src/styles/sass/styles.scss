@@ -2,7 +2,8 @@
 @import "partials/loading";
 @import "partials/variables";
 @import "partials/typography";
-@import "partials/media-queries";
+@import "partials/sections";
+
 
 html {
     font-size: 125%;
@@ -13,13 +14,9 @@ html {
     margin: 0 auto;
 }
 
-
-h1 {
-    color: palevioletred;
-}
-
 img {
-    width: 90%;
+    width: 100%;
+    text-align: center;
 }
 
 .randomBtn {
@@ -30,3 +27,5 @@ img {
 .bg-green {
     background-color: green;
 }
+
+@import "partials/media-queries";
