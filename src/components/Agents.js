@@ -89,12 +89,13 @@ const Agents = () => {
               onClick={() => {
                 randomizeAgent();
               }}
+              disabled={userAgents.length === 0 ? true : false}
             >
               Randomize Selected Agents
             </button>
           </div>
         </section>
-        
+
         <section className="agentContainer">
           {randomAgent.length === 0 ? null : (
             <div className="randomAgent">

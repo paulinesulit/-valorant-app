@@ -44,6 +44,10 @@ main {
   .randomSelected {
     background-color: green;
     color: $textBright;
+    &:disabled {
+        background-color: $bgSecond;
+        color: grey;
+    }
   }
 }
 

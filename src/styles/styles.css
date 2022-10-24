@@ -280,7 +280,7 @@ button {
 button:disabled {
   background-color: green;
   color: #FFD523;
-  margin: 5px 0;
+  margin-right: 0;
   cursor: default;
 }
 
@@ -336,6 +336,10 @@ main .agentContainer {
 .randomizeBtns .randomSelected {
   background-color: green;
   color: #FFD523;
+}
+.randomizeBtns .randomSelected:disabled {
+  background-color: #B2B1B9;
+  color: grey;
 }
 
 .footer {
