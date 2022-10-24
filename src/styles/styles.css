@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Rubik:wght@300;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&family=Teko:wght@300;700&display=swap");
 html {
   line-height: 1.15;
   -ms-text-size-adjust: 100%;
@@ -242,50 +242,62 @@ a, h1, h2, h3, h4, h5, h6, p, ul {
 }
 
 h1 {
-  color: #FFD523;
-  font-family: "Rubik", sans-serif;
-  font-size: 2rem;
+  color: #ff4655;
+  font-family: "Teko", sans-serif;
+  font-size: 2.5rem;
+  text-transform: uppercase;
 }
 
 h2 {
-  font-size: 1.5rem;
-  font-family: "Roboto Mono", monospace;
-  color: #FFD523;
+  font-size: 2.5rem;
+  font-family: "Teko", sans-serif;
+  font-weight: 700;
+  color: #ece8e1;
   text-transform: uppercase;
-  text-align: center;
-  padding-top: 10px;
+  padding-top: 20px;
+  padding-left: 20px;
+  position: absolute;
+  text-shadow: 5px 5px #ff4655;
 }
 
 p {
-  font-family: "Rubik", sans-serif;
-  font-weight: 300px;
-  color: #595260;
+  font-family: "Roboto", sans-serif;
+  font-weight: 100;
+  color: #ece8e1;
 }
 
 footer p {
-  font-family: "Rubik", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 300;
   font-size: 0.8rem;
 }
 
+a {
+  text-decoration: none;
+}
+
 button {
-  font-family: "Roboto Mono", monospace;
-  background-color: #B2B1B9;
+  font-family: "Roboto", sans-serif;
+  background-color: #ece8e1;
   border: none;
-  color: #595260;
+  color: black;
   padding: 6px;
   margin: 5px;
   cursor: pointer;
 }
 button:disabled {
-  background-color: green;
-  color: #FFD523;
+  background-color: #ff4655;
+  color: #ece8e1;
   margin-right: 0;
   cursor: default;
 }
+button:hover, button:focus {
+  background-color: #ff4655;
+  color: #ece8e1;
+}
 
 body {
-  background-color: #2C2E43;
+  background-color: black;
   position: relative;
   min-height: 100vh;
 }
@@ -295,7 +307,7 @@ header {
   padding: 50px;
 }
 header p {
-  padding: 20px 70px;
+  padding: 0 70px;
 }
 
 main {
@@ -316,8 +328,16 @@ main .allAgents {
 }
 main .agentContainer {
   width: 60%;
-  border: 1px solid #B2B1B9;
-  height: 720px;
+  border: 1px solid #ece8e1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .agentBtns {
@@ -334,11 +354,11 @@ main .agentContainer {
   margin-top: 120px;
 }
 .randomizeBtns .randomSelected {
-  background-color: green;
-  color: #FFD523;
+  background-color: #ff4655;
+  color: #ece8e1;
 }
 .randomizeBtns .randomSelected:disabled {
-  background-color: #B2B1B9;
+  background-color: #ece8e1;
   color: grey;
 }
 
@@ -349,7 +369,7 @@ main .agentContainer {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  height: 2rem;
+  height: 2.8rem;
 }
 .footer footer {
   bottom: 0;
@@ -378,4 +398,74 @@ img {
 
 .bg-green {
   background-color: green;
+}
+
+@media (max-width: 1240px) {
+  .allAgents {
+    margin-left: 20px;
+  }
+  .agentContainer {
+    margin-right: 20px;
+  }
+}
+@media (max-width: 1090px) {
+  h2 {
+    position: relative;
+    text-align: center;
+  }
+}
+@media (max-width: 1000px) {
+  .randomizeBtns {
+    margin-top: 50px;
+  }
+}
+@media (max-width: 915px) {
+  main {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  main .allAgents {
+    width: 100%;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+  main .allAgents .randomizeBtns {
+    margin-top: 20px;
+  }
+  main .agentContainer {
+    width: 80%;
+    margin-right: 0;
+    margin-top: 20px;
+  }
+  header {
+    padding: 20px;
+  }
+  header p {
+    padding: 0 20px;
+  }
+}
+@media (max-width: 520px) {
+  .randomizeBtns {
+    text-align: center;
+  }
+  h1 {
+    font-size: 1.5rem;
+  }
+  button {
+    font-size: 0.8rem;
+  }
+  h2 {
+    font-size: 1.5rem;
+  }
+  p, footer p {
+    font-size: 0.7rem;
+  }
 }

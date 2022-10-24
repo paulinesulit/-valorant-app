@@ -8,7 +8,7 @@ header {
   text-align: center;
   padding: 50px;
   p {
-    padding: 20px 70px;
+    padding: 0 70px;
   }
 }
 
@@ -23,8 +23,11 @@ main {
   }
   .agentContainer {
     width: 60%;
-    border: 1px solid $bgSecond;
-    height: 720px;
+    border: 1px solid $neutral;
+    // height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 
@@ -42,10 +45,10 @@ main {
 .randomizeBtns {
   margin-top: 120px;
   .randomSelected {
-    background-color: green;
-    color: $textBright;
+    background-color: $bright;
+    color: $neutral;
     &:disabled {
-        background-color: $bgSecond;
+        background-color: $neutral;
         color: grey;
     }
   }
@@ -54,7 +57,7 @@ main {
 .footer {
   display: flex;
   justify-content: center;
-  height: 2rem;
+  height: 2.8rem;
   footer {
     bottom: 0;
     padding: 15px;

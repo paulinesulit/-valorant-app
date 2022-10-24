@@ -1,47 +1,59 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Rubik:wght@300;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&family=Teko:wght@300;700&display=swap');
 
 h1 {
-    color: $textBright;
+    color: $bright;
     font-family: $fontHeader;
-    font-size: 2rem;
+    font-size: 2.5rem;
+    text-transform: uppercase;
 }
 
 h2 {
-    font-size: 1.5rem;
-    font-family: $fontMain;
-    color: $textBright;
+    font-size: 2.5rem;
+    font-family: $fontHeader;
+    font-weight: 700;
+    color: $neutral;
     text-transform: uppercase;
-    text-align: center;
-    padding-top: 10px;
+    padding-top: 20px;
+    padding-left: 20px;
+    position: absolute;
+    text-shadow: 5px 5px $bright;
 }
 
 p {
-    font-family: $fontHeader;
-    font-weight: 300px;
-    color: $textNeutral;
+    font-family: $fontMain;
+    font-weight: 100;
+    color: $neutral;
 }
 
 footer p {
-    font-family: $fontHeader;
+    font-family: $fontMain;
     font-weight: 300;
     font-size: 0.8rem;
+}
+
+a {
+    text-decoration: none;
 }
 
 // buttons
 
 button {
     font-family: $fontMain;
-    background-color: $bgSecond;
+    background-color: $neutral;
     border: none;
-    color: $textNeutral;
+    color: $bgMain;
     padding: 6px;
     margin: 5px;
     cursor: pointer;
     &:disabled {
-        background-color: green;
-        color: $textBright;
+        background-color: $bright;
+        color: $neutral;
         margin-right: 0;
         cursor: default;
+    }
+    &:hover, &:focus {
+        background-color: $bright;
+        color: $neutral;
     }
 }
 
