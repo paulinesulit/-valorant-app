@@ -23,6 +23,7 @@ p {
   font-family: $fontMain;
   font-weight: 100;
   color: $neutral;
+  font-size: 0.9rem;
 }
 
 footer {
@@ -30,7 +31,7 @@ footer {
   a {
     font-family: $fontMain;
     font-weight: 300;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     color: $neutral;
   }
   a:hover, a:focus {
@@ -57,10 +58,13 @@ button {
     color: $neutral;
     margin-right: 0;
     cursor: default;
+    &:hover {
+      background-color: $bright;
+    }
   }
   &:hover,
   &:focus {
-    background-color: $bright;
-    color: $neutral;
+    background-color: $hover;
+    // color: $neutral;
   }
 }

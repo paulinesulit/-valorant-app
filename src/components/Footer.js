@@ -3,9 +3,9 @@ const Footer = () => {
     <div className="wrapper footer">
       <footer>
         <p>
-          Created by{" "}
+          © 2022 Created by{" "}
           <a href="https://paulinesulit.com/" target="_blank" rel="noreferrer">
-            Pauline
+            Pauline Sulit
           </a>
         </p>
       </footer>

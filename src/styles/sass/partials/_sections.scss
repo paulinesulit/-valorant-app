@@ -20,15 +20,18 @@ main {
   .allAgents {
     display: flex;
     flex-wrap: wrap;
-    width: 35%;
+    width: 45%;
   }
   .agentContainer {
-    width: 60%;
+    width: 55%;
     border: 1px solid $neutral;
     // height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
+    .randomAgent {
+      text-align: center;
+    }
   }
 }
 
@@ -44,7 +47,7 @@ main {
 }
 
 .randomizeBtns {
-  margin-top: 120px;
+  margin-top: 50px;
   .randomSelected {
     background-color: $bright;
     color: $neutral;
