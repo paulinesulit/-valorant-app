@@ -413,6 +413,20 @@ img {
   background-color: green;
 }
 
+@media (min-width: 1600px) {
+  main {
+    margin: 40px;
+  }
+  main .allAgents {
+    width: 30%;
+  }
+  main .agentContainer {
+    width: 70%;
+  }
+  img {
+    width: 80%;
+  }
+}
 @media (max-width: 1240px) {
   main .allAgents {
     margin-left: 20px;
