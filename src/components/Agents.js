@@ -6,6 +6,7 @@ const Agents = () => {
   const [allAgents, setAllAgents] = useState([]);
   const [userAgents, setUserAgents] = useState([]);
   const [randomAgent, setRandomAgent] = useState([]);
+  // const [loading, setLoading] = useState(true);
 
   // API call
   useEffect(() => {
@@ -50,7 +51,7 @@ const Agents = () => {
   // add X to remove selected characters
   const removeAgent = (id) => {
     const newList = userAgents.filter((e) => {
-      return e.displayName !== id.displayName
+      return e.displayName !== id.displayName;
     });
     setUserAgents(newList);
   };
@@ -104,6 +105,17 @@ const Agents = () => {
             </div>
           )}
         </section>
+
+        {/* <section className="agentContainer">
+          {randomAgent.length === 0 ? null : loading ? (
+            <div className="loader"></div>
+          ) : (
+            <div className="randomAgent">
+              <h2>{randomAgent.displayName}</h2>
+              <img src={randomAgent.fullPortrait} alt="agent" />
+            </div>
+          )}
+        </section> */}
       </main>
     </div>
   );
